@@ -95,19 +95,19 @@ body {
   transform: rotate(-10deg);
 }
 .imagem-box.box-2 {
-  top: 10%;
+  top: 15%;
   right: 10%;
   transform: rotate(15deg);
 }
 .imagem-box.box-3 {
   bottom: 20%;
   left: 15%;
-  transform: rotate(5deg);
+  transform: rotate(15deg);
 }
 .imagem-box.box-4 {
-  bottom: 15%;
+  bottom: 20%;
   right: 15%;
-  transform: rotate(-8deg);
+  transform: rotate(-10deg);
 }
 
 .frase-central {
@@ -142,8 +142,8 @@ body {
   }
 
   .imagem-box {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
 
   .imagem-box.box-1 {
@@ -188,8 +188,8 @@ body {
   }
 
   .imagem-box {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
   .imagem-box.box-1 {
     top: 5%;
