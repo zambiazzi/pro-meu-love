@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
 body {
   margin: 0;
   overflow: hidden;
@@ -6,42 +9,28 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: black;
-  transition: background-color 1s ease-in-out;
-  font-family: Arial, sans-serif;
+  transition: background-color 3s ease-in-out;
+  font-family: "Poppins", sans-serif;
 }
 
-.container-lampada {
+.container-coracao {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50px;
-  height: 400px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 
-.fio {
-  width: 2px;
-  height: 265px;
-  background-color: white;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.lampada-container {
+.coracao-container {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-}
-
-.lampada-svg {
-  width: 100%;
-  height: 100%;
-  fill: white;
-  transition: fill 0.3s ease-in-out;
 }
 
 .content-area {
@@ -53,7 +42,7 @@ body {
   background-color: white;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  transition: opacity 3s ease-in-out, visibility 3s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,8 +58,8 @@ body {
 }
 
 .imagem-box {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   background-color: #f0f0f0;
   border-radius: 15px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -80,27 +69,35 @@ body {
   font-weight: bold;
   color: #555;
   position: absolute;
+  overflow: hidden;
 }
 
 .imagem-box.box-1 {
-  top: 15%;
+  top: 10%;
   left: 10%;
   transform: rotate(-10deg);
 }
 .imagem-box.box-2 {
-  top: 15%;
+  top: 10%;
   right: 10%;
   transform: rotate(15deg);
 }
 .imagem-box.box-3 {
-  bottom: 20%;
-  left: 15%;
+  bottom: 12%;
+  left: 13%;
   transform: rotate(15deg);
 }
 .imagem-box.box-4 {
-  bottom: 20%;
+  bottom: 10%;
   right: 15%;
   transform: rotate(-10deg);
+}
+
+.imagem-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .frase-central {
@@ -110,6 +107,8 @@ body {
   margin-bottom: 40px;
   z-index: 10;
   position: relative;
+  max-width: 25%;
+  text-align: center;
 }
 
 .btn-continuar {
@@ -120,93 +119,444 @@ body {
   border-radius: 8px;
   font-size: 1.2em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
   z-index: 10;
   position: relative;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .btn-continuar:hover {
   background-color: darkred;
 }
 
+.btn-continuar.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.second-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.second-screen.show {
+  opacity: 1;
+  visibility: visible;
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.second-screen .image-container {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 40px);
+}
+
+.second-screen .image-container img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.second-screen .text-content {
+  flex: 1;
+  max-width: 50%;
+  padding-left: 20px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.second-screen .screen-title {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.second-screen .screen-paragraph {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.second-screen .btn-voltar {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.second-screen .btn-voltar:hover {
+  background-color: #333;
+}
+
+.btn-continuar-2 {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
+  z-index: 10;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.btn-continuar-2:hover {
+  background-color: #0056b3;
+}
+
+.btn-continuar-2.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Terceira Tela (Música e Letra) - ESTILOS ATUALIZADOS */
+.third-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column; /* Organiza título, container principal e botão voltar */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente o conteúdo principal */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  padding: 20px; /* Padding geral da tela */
+  box-sizing: border-box;
+  overflow-y: auto; /* Permite scroll na tela inteira se o conteúdo for muito alto */
+}
+
+.third-screen.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.top-dedication {
+  font-size: 1.6em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.music-lyrics-container {
+  display: flex; /* Para os blocos de música e letra ficarem lado a lado */
+  width: 90%;
+  max-width: 1000px; /* Largura máxima do container principal */
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Garante que os cantos arredondados funcionem */
+  background-color: #ffffff; /* Fundo branco para o container geral */
+  flex-grow: 0; /* NÃO cresce mais que o necessário */
+  flex-shrink: 1; /* Permite encolher */
+}
+
+.music-block {
+  flex: 0 0 350px; /* Largura fixa para o bloco da música */
+  background-color: #f9f9f9; /* Fundo cinza claro */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza itens dentro do bloco */
+  padding: 30px 20px; /* Padding ajustado */
+  box-sizing: border-box;
+  text-align: center; /* Alinha o texto centralmente */
+  border-right: 1px solid #eee; /* Linha divisória */
+  position: relative;
+  justify-content: space-between; /* Espaça conteúdo verticalmente */
+}
+
+.music-block .album-art {
+  width: 200px; /* Tamanho da capa do álbum */
+  height: 200px; /* Tamanho da capa do álbum */
+  border-radius: 5px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.music-block .song-info {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 30px; /* Ajuste o espaçamento aqui */
+  text-align: center;
+}
+
+.music-block .song-info .song-name {
+  font-size: 1.4em;
+  margin-bottom: 5px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.music-block .song-info .artist-name {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 0;
+}
+
+.music-block .player-controls-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto; /* Empurra para o fundo do music-block */
+  padding-top: 10px;
+  padding-bottom: 10px; /* Adicionado padding bottom para evitar corte */
+}
+
+.music-block .progress-time {
+  display: flex;
+  justify-content: space-between;
+  width: 90%; /* Ajuste a largura para os tempos */
+  font-size: 0.8em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.music-block .progress-bar-container {
+  width: 90%; /* Ajuste a largura para a barra */
+  height: 4px;
+  background-color: #ddd;
+  border-radius: 2px;
+  margin-bottom: 0; /* Não há botões abaixo */
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.music-block .progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: #ff0000;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.lyrics-block {
+  flex: 1; /* Ocupa o restante do espaço */
+  background-color: #40101b; /* Tom de vinho/bordô */
+  color: #f8f0e3;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Adiciona scroll se a letra for muito longa */
+  height: auto; /* Altura automática para se ajustar ao conteúdo */
+  min-height: 350px; /* MINIMO: Altura mínima para o bloco de letra para desktop */
+  line-height: 1.7;
+  font-size: 1.15em;
+  text-align: left;
+  font-family: "Open Sans", sans-serif; /* NOVA FONTE PARA A LETRA */
+}
+
+.lyrics-block pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* NOVO BOTÃO CONTINUAR DA TERCEIRA TELA */
+.btn-continuar-3 {
+  background-color: #28a745; /* Cor verde para diferenciar */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
+  margin-top: 20px; /* Espaço do container principal */
+  opacity: 0; /* Escondido inicialmente */
+  visibility: hidden; /* Escondido inicialmente */
+}
+
+.btn-continuar-3:hover {
+  background-color: #218838;
+}
+
+.btn-continuar-3.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-voltar-3 {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-voltar-3:hover {
+  background-color: #333;
+}
+
+/* ULTIMA PAGINA - ESTILOS INICIAIS */
+.final-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.final-screen.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.final-image {
+  max-width: 800px; /* Tamanho da imagem final */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px; /* Espaço abaixo da imagem */
+}
+
+.final-phrases-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px; /* Largura máxima para as frases */
+}
+
+.final-phrase {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
+  opacity: 0; /* Escondido inicialmente */
+  transform: translateY(20px); /* Começa 20px abaixo */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Animação suave */
+}
+
+.final-phrase.show {
+  opacity: 1;
+  transform: translateY(0); /* Sobe para a posição original */
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .frase-central {
-    font-size: 1.8em;
+  .music-lyrics-container {
+    flex-direction: column;
+    width: 95%;
+    max-width: 400px;
   }
 
-  .imagem-box {
-    width: 250px;
-    height: 250px;
+  .music-block {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
   }
 
-  .imagem-box.box-1 {
-    top: 10%;
-    left: 5%;
-    transform: rotate(-15deg);
+  .music-block .album-art {
+    width: 180px;
+    height: 180px;
   }
-  .imagem-box.box-2 {
-    top: 8%;
-    right: 5%;
-    transform: rotate(20deg);
+
+  .music-block .player-controls-area {
+    width: 100%;
   }
-  .imagem-box.box-3 {
-    bottom: 15%;
-    left: 8%;
-    transform: rotate(10deg);
+
+  .music-block .progress-time {
+    width: 100%;
   }
-  .imagem-box.box-4 {
-    bottom: 10%;
-    right: 8%;
-    transform: rotate(-12deg);
+
+  .music-block .progress-bar-container {
+    width: 100%;
+  }
+
+  .lyrics-block {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+    max-height: 300px;
+    font-size: 1.05em;
+    min-height: auto;
+  }
+
+  .final-image {
+    max-width: 250px;
+  }
+  .final-phrase {
+    font-size: 1.4em;
   }
 }
 
 @media (max-width: 480px) {
-  .container-lampada {
-    height: 200px;
+  .music-block .album-art {
+    width: 150px;
+    height: 150px;
   }
-
-  .fio {
-    height: 100px;
-  }
-
-  .lampada-container {
-    top: 100px;
-    width: 40px;
-    height: 40px;
-  }
-
-  .frase-central {
+  .music-block .song-info .song-name {
     font-size: 1.2em;
   }
-
-  .imagem-box {
-    width: 200px;
-    height: 200px;
+  .music-block .song-info .artist-name {
+    font-size: 0.9em;
   }
-  .imagem-box.box-1 {
-    top: 5%;
-    left: 2%;
-    transform: rotate(-20deg);
-  }
-  .imagem-box.box-2 {
-    top: 3%;
-    right: 2%;
-    transform: rotate(25deg);
-  }
-  .imagem-box.box-3 {
-    bottom: 10%;
-    left: 5%;
-    transform: rotate(15deg);
-  }
-  .imagem-box.box-4 {
-    bottom: 8%;
-    right: 5%;
-    transform: rotate(-18deg);
+  .lyrics-block {
+    font-size: 0.95em;
   }
 
-  .btn-continuar {
-    padding: 10px 20px;
-    font-size: 1em;
+  .final-image {
+    max-width: 200px;
+  }
+  .final-phrase {
+    font-size: 1.1em;
   }
 }
